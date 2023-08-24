@@ -1,11 +1,5 @@
 {
   "extends": "tsconfig/react-library.json",
-  "compilerOptions": {
-    "lib": [
-      "DOM",
-      "DOM.Iterable"
-    ]
-  },
   "include": [
     "."
   ],
@@ -13,5 +7,11 @@
     "dist",
     "build",
     "node_modules"
-  ]
+  ],
+  "compilerOptions": {
+    "lib": [
+      "DOM",
+      "DOM.Iterable"
+    ]
+  }
 }

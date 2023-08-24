@@ -2,9 +2,11 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev",
+    "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "dev:dgr_workwise_customer": "turbo run dev --filter=dgr_workwise_customer",
+    "dev:dgr_workwise_backoffice": "turbo run dev --filter=dgr_workwise_backoffice"
   },
   "devDependencies": {
     "@turbo/gen": "^1.9.7",

@@ -3,6 +3,10 @@
  * Reuse as a whole or in part is prohibited without permission.
  * Created by the Product Engineering Team/Software Engineering Innovation Group
  */
-import * as React from "react";
+import {
+    AxiosInstance
+} from 'axios'
 
-export * from './workwise_ui_components/appbars/ExternalAppbar'
+export class BaseApi {
+    constructor(private readonly axios: AxiosInstance) {}
+}
