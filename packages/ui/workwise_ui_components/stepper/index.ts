@@ -4,4 +4,4 @@
  * Created by the Product Engineering Team/Software Engineering Innovation Group
  */
 
-export * from './BasicModal'
+export * from './OnboardingStepper'

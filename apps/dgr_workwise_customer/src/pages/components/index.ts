@@ -4,4 +4,5 @@
  * Created by the Product Engineering Team/Software Engineering Innovation Group
  */
 
-export * from './BasicModal'
+export * from './ProductCatalog/ProductCatalogHeader'
+export * from './ProductCatalog/ProductCatalogAppbar'
