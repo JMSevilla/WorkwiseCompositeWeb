@@ -26,7 +26,7 @@ const HTTP_OPTIONS: HttpOptions = {
     }
 }
 
-export const httpClient = new Http({ ...HTTP_OPTIONS, baseURL: config.value.DEV_URL })
+export const httpClient = new Http({ ...HTTP_OPTIONS, baseURL: 'http://localhost:4000/api/v1' })
 
 export const useApiCallBack = <R, A extends unknown>(asyncFn: (api: Api, args: A) => Promise<R>) =>
     useAsyncCallback(async (args?: A) => {

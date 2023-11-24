@@ -8,9 +8,10 @@ import { ReactElement, ReactNode } from "react";
 import { AppProps } from "next/app";
 import { CssBaseline, Stack } from "@mui/material";
 import { useRouter } from "next/router";
-import OutsideLayout from "./Layouts/OutsideLayout";
+import OutsideLayout from "./Layouts/OnboardingLayout";
 import SecuredLayout from "./Layouts/SecuredLayout";
 import { context } from 'utils'
+import './index.css'
 export type NextPageWithLayout<P = any, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode
 }
@@ -34,9 +35,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout){
     <ThemeProvider theme={theme}>
         <CssBaseline />
         <context.GlobalProvider>
-          <Layout>
-            {getLayout(<Component {...pageProps} />)}
-          </Layout>
+          <Stack sx={{ height: '100vh'}}>{getLayout(<Component {...pageProps} />)}</Stack>
         </context.GlobalProvider>
     </ThemeProvider>
   )
