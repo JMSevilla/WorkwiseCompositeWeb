@@ -3,7 +3,7 @@ import qs, { ParsedQuery } from 'query-string'
 import {useEffect, useMemo, useState } from 'react'
 
 
-type StaticRoutes = Record<'home', string>
+type StaticRoutes = Record<'home' | 'account_setup', string>
 type TransitionOptions = ArgumentTypes<NextRouter['push']>[2]
 type PathFromRoutes = (routes: StaticRoutes) => string
 
@@ -43,16 +43,22 @@ export const useRouter = () => {
             () => ({
                 ...router,
                 push: navigate(push),
-                replace: navigate(replace)
+                replace: navigate(replace),
+                currAsPath: getCurrentAsPath()
             }),
             [router, staticRoutes]
         )
     }
 
+    function getCurrentAsPath(){
+        const curr = router.asPath.substring(1)
+        return curr;
+    }
+
     async function push(path: string | PathFromRoutes, options?: TransitionOptions) {
-        console.log(path)
         return typeof path === 'string'
-        && router.push(routeUrl(path), '', configuredRouteOptions(options)) 
+        ? router.push(routeUrl(path), addTenantSlug(path), configuredRouteOptions(options))
+        : router.push(routeUrl(path(staticRoutes)), addTenantSlug(path(staticRoutes)), configuredRouteOptions(options))
     }
 
     async function replace(path: string | PathFromRoutes, options?: TransitionOptions) {
@@ -62,8 +68,16 @@ export const useRouter = () => {
     }
 
     function routeUrl(path: string){
-        return path === staticRoutes.home || path.includes('http://') ? path : '/'
+        return path === staticRoutes.home || path.includes('http://') ? path : '/[...slug]'
     }
+
+    function addTenantSlug(path: string): string {
+        const tenantUrl = path.split('/')?.[1];
+        if (tenantUrl && path.split('/')?.[1] != tenantUrl) {
+          return tenantUrl + path;
+        }
+        return path;
+      }
 
     function navigate(fn: (path: string | PathFromRoutes, options?: TransitionOptions) => Promise<boolean>) {
         return async (path: string | PathFromRoutes | PathParameters, options?: TransitionOptions) => {
@@ -80,7 +94,6 @@ export const useRouter = () => {
                     url: typeof path.url === 'string' ? path.url : path.url(staticRoutes),
                     query: path.query
                 })
-
                 return await fn(stringifiedPath, options)
             } catch (error) {
                 console.log(error)

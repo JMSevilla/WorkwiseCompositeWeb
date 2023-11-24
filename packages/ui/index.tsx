@@ -5,9 +5,10 @@
  */
 import * as React from "react";
 
-export * from './workwise_ui_components/appbars/ExternalAppbar'
-export * from './workwise_ui_components/forms'
-export * from './workwise_ui_components/login'
-export * from './workwise_ui_components/modal'
-export * as MuiButtons from './workwise_ui_components/buttons'
-export * from './workwise_ui_components/navigation'
+export * from "./workwise_ui_components/appbars/ExternalAppbar";
+export * from "./workwise_ui_components/forms";
+export * from "./workwise_ui_components/login";
+export * from "./workwise_ui_components/modal";
+export * as MuiButtons from "./workwise_ui_components/buttons";
+export * from "./workwise_ui_components/navigation";
+export * from "./workwise_ui_components/ComponentLoader/ComponentLoader";

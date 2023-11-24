@@ -1,6 +1,15 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
+const withTM = require('next-transpile-modules')(['ui', 'utils']);
 
-module.exports = nextConfig
+module.exports = withTM({
+  reactStrictMode: true,
+  output: "standalone",
+  staticPageGenerationTimeout: 120,
+  async rewrites() {
+    return [
+      {
+        source: '/:path*',
+        destination: '/',
+      },
+    ];
+  },
+});

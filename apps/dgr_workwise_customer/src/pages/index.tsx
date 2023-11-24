@@ -4,7 +4,6 @@ import CatalogLayout from "./Layouts/CatalogLayout"
 const Home = () => {
   return (
     <>
-      <h3>Home page</h3>
     </>
   )
 }

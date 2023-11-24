@@ -9,4 +9,7 @@ import {
 
 export class BaseApi {
     constructor(private readonly axios: AxiosInstance) {}
+    public checkAccount(){
+        return this.axios.get(`accounts/check-accounts`)
+    }
 }

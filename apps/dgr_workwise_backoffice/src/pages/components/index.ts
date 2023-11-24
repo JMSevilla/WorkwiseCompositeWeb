@@ -4,5 +4,4 @@
  * Created by the Product Engineering Team/Software Engineering Innovation Group
  */
 
-export * from './Global/GlobalContext'
-export * from './Global/PageLoaderContext'
+export * from './ProductCatalog/ProductCatalogAppbar'
